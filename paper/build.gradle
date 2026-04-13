@@ -1,0 +1,43 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+dependencies {
+    implementation project(':core')
+
+    compileOnly 'su.plo.voice.api:server:2.1.8'
+    compileOnly 'su.plo.voice.api:server-proxy-common:2.1.8'
+    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
+}
+
+shadowJar {
+    archiveBaseName.set('SoundCreator-paper')
+    archiveClassifier.set('')
+    mergeServiceFiles()
+    relocate 'javazoom', 'me.elb.soundCreator.libs.javazoom'
+    relocate 'org.tritonus', 'me.elb.soundCreator.libs.tritonus'
+    relocate 'com.jcraft', 'me.elb.soundCreator.libs.jcraft'
+    dependencies {
+        exclude(dependency('su.plo.voice.api:.*'))
+        exclude(dependency('org.spigotmc:.*'))
+    }
+}
+
+processResources {
+    def props = [version: rootProject.version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+build { dependsOn shadowJar }

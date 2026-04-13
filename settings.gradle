@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://maven.fabricmc.net' }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    plugins {
+        id 'com.gradleup.shadow' version '8.3.5'
+        id 'net.minecraftforge.gradle' version '6.0.24'
+        id 'fabric-loom' version '1.7.4'
+    }
+}
+
+rootProject.name = 'SoundCreator'
+
+include 'core'
+include 'paper'
+include 'forge-1.20.1'
+include 'forge-1.21.1'
+include 'fabric-1.20.1'
+include 'fabric-1.21.1'

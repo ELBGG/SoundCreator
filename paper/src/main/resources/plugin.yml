@@ -1,0 +1,44 @@
+name: SoundCreator
+version: '${version}'
+main: me.elb.soundCreator.SoundCreator
+api-version: '1.21'
+authors: [ ELB_GG ]
+
+depend:
+  - PlasmoVoice
+
+commands:
+  sc:
+    description: SoundCreator - reproduce sonidos del servidor via PlasmoVoice
+    usage: /sc <play|stop|list|reload> [args...]
+    aliases: [ soundcreator ]
+    permission: soundcreator.use
+
+permissions:
+  soundcreator.use:
+    description: Permite usar /sc list
+    default: true
+  soundcreator.play:
+    description: Permite reproducir sonidos a si mismo
+    default: op
+  soundcreator.play.others:
+    description: Permite reproducir sonidos a otros jugadores
+    default: op
+  soundcreator.play.all:
+    description: Permite reproducir sonidos a todos los jugadores
+    default: op
+  soundcreator.stop:
+    description: Permite detener reproducciones
+    default: op
+  soundcreator.reload:
+    description: Permite recargar la libreria de sonidos
+    default: op
+  soundcreator.admin:
+    description: Otorga todos los permisos de SoundCreator
+    default: op
+    children:
+      soundcreator.play: true
+      soundcreator.play.others: true
+      soundcreator.play.all: true
+      soundcreator.stop: true
+      soundcreator.reload: true

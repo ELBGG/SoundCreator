@@ -1,0 +1,17 @@
+# SoundCreator Configuration
+# Coloca tus archivos .mp3, .wav y .ogg en la carpeta indicada en sounds-folder
+
+# Subcarpeta dentro de plugins/SoundCreator/ donde se buscan los archivos de audio
+sounds-folder: sounds
+
+# Nombre de la source line de PlasmoVoice a usar (por defecto existe "proximity")
+source-line: proximity
+
+# Volumen por defecto (0.0 a 1.0)
+default-volume: 1.0
+
+# Si es true, los jugadores sin PlasmoVoice instalado se omiten silenciosamente
+skip-non-voice-players: true
+
+# Maximo de sonidos reproduciendose simultaneamente en el servidor (0 = sin limite)
+max-concurrent-sounds: 10

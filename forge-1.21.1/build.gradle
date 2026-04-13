@@ -1,0 +1,45 @@
+plugins {
+    id 'net.minecraftforge.gradle'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.21.1'
+    runs {
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                soundcreator { source sourceSets.main }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.21.1-52.0.2'
+    implementation project(':core')
+    compileOnly 'su.plo.voice.api:server:2.1.8'
+    compileOnly 'su.plo.voice.api:server-proxy-common:2.1.8'
+}
+
+jar {
+    archiveBaseName.set('SoundCreator-forge-1.21.1')
+    manifest {
+        attributes([
+            'Specification-Title'     : 'soundcreator',
+            'Specification-Vendor'    : 'ELB_GG',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.version,
+            'Implementation-Vendor'   : 'ELB_GG'
+        ])
+    }
+}

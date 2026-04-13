@@ -1,0 +1,24 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "soundcreator"
+version = "${file.jarVersion}"
+displayName = "SoundCreator"
+description = "Reproduce archivos de audio del servidor via PlasmoVoice."
+authors = "ELB_GG"
+
+[[dependencies.soundcreator]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "SERVER"
+
+[[dependencies.soundcreator]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "SERVER"

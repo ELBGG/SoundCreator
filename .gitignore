@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+**/build/
+out/
+
+# Run server (local test environment)
+run/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+# Secrets / local overrides
+local.properties
